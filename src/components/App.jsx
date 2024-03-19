@@ -1,38 +1,24 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Description from './Description/Description'
-import Options from './Options/Options'
-import Feedback from './Feedback/Feedback'
-import Notification from './Notification/Notification'
-
+import ContactForm from './ContactForm/ContactForm'
+import SearchBox from './SearchBox/SearchBox'
+import ContactList from './ContactList/ContactList'
 function App() {
-  const [feedbackTypes, setFeedbackTypes] = useState(() => {
-	const savedFeedback = window.localStorage.getItem("saved-feedback");
-  if (savedFeedback !== null) {
-    return JSON.parse(savedFeedback);
-  }
-    return { good: 0, neutral: 0, bad: 0 };
-  });
-
-  const updateFeedback = feedbackType => {
-    setFeedbackTypes({
-      ...feedbackTypes,
-      [feedbackType]: feedbackTypes[feedbackType] + 1
-    });
-  }
-  
-  useEffect(() => {
-    window.localStorage.setItem("saved-feedback", JSON.stringify(feedbackTypes));
-  }, [feedbackTypes]);
-  const totalFeedback = feedbackTypes.good + feedbackTypes.neutral + feedbackTypes.bad;
-  const positiveFeedback = Math.round(((feedbackTypes.good + feedbackTypes.neutral) / totalFeedback) * 100);
-
+  const [phoneContacts,setPhoneContacts]=useState([
+  {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+  {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+  {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+  {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+]
+)
   return (
-    <>
-      <Description />
-      <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} setFeedbackTypes={setFeedbackTypes} />
-      {totalFeedback > 0 ? <Feedback good={feedbackTypes.good} bad={feedbackTypes.bad} neutral={feedbackTypes.neutral} totalFeedback={totalFeedback} positive={positiveFeedback} />:<Notification />} 
-    </>
+  <div>
+  <h1>Phonebook</h1>
+  <ContactForm />
+  <SearchBox />
+  <ContactList phoneContacts={phoneContacts} />
+</div>
+
   )
 }
 
