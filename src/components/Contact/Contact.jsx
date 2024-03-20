@@ -1,10 +1,9 @@
-
-function Contact({name,number}) {
+const Contact = ({contact, deleteContact}) => {
   return (
-      <li>
-          <h2>{name}</h2>
-          <p>{number}</p>
-          <button type="button">Delete</button>
+   <li>
+          <h2>{contact.name}</h2>
+          <p>{contact.number}</p>
+          <button type="button" onClick={()=>deleteContact(contact.id)}>Delete</button>
     </li>
   )
 }

@@ -1,9 +1,9 @@
 import Contact from "../Contact/Contact"
-function ContactList({phoneContacts}) {
+const ContactList=({contacts,deleteContact}) =>{
   return (
       <ul>
-          {phoneContacts.map(phoneContact => {
-              return (<Contact key={phoneContact.id} name={phoneContact.name} number={phoneContact.number} />)
+          {contacts.map(contact => {
+              return (<Contact key={contact.id} contact={contact} deleteContact={deleteContact} />)
           })} 
     </ul>
   )
