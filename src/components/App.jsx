@@ -17,9 +17,9 @@ function App() {
 
   const addContact = (newContact) => {
     const finalContact = { ...newContact, id: nanoid() };
-    console.log(finalContact);
     setContacts((prevContacts)=>[...prevContacts, finalContact])
   };
+
 
   
   const deleteContact = (contactId) => {
@@ -38,7 +38,7 @@ function App() {
   return (
   <div>
   <h1>Phonebook</h1>
-      <ContactForm addContact={addContact}/>
+      <ContactForm addContact={addContact} />
   <SearchBox filter={filter} onChangeFilter={onChangeFilter} />
   <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
 </div>

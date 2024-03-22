@@ -7,3 +7,7 @@
     border-radius: 8px;
     padding: 20px;
 }
+
+.error {
+    color: rgb(234, 61, 61);
+}
