@@ -5,7 +5,7 @@ import css from "./ContactForm.module.css"
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-  number: Yup.number().min(3, "Too Short!").required("Required"),
+  number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 });
 
 const initialValues = {
@@ -32,7 +32,7 @@ const ContactForm = ({ addContact }) => {
               <label htmlFor={numberFieldId}>Number</label>
               <Field type="tel" name="number" id={numberFieldId} />
               <ErrorMessage className={css.error} name="number" component="span" />
-			<button type="submit">Add contact</button>
+			<button  className={css.add_button} type="submit">Add contact</button>
 			</Form>
     </Formik>
 
